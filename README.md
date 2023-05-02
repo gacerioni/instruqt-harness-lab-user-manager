@@ -30,11 +30,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://harness.io">
     <img src="images/harness.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Instruqt Harness Lab User Manager (Anbu Automation)</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
