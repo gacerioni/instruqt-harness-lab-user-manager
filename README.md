@@ -128,7 +128,39 @@ Let's use the built container image for now.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### The easy way (containers)
+
+The first thing is to add these variables to a file, without any quotation marks on the values:
+
+```
+cat > env.harness << EOL
+AIRTABLE_TOKEN=<YOUR_AT_TOKEN>
+AIRTABLE_BASE_ID=<YOUR_AT_BASE_ID>
+AIRTABLE_TABLE_DB=<YOUR_AT_TABLE_ID>
+VAULT_TOKEN=<YOUR_VAULT_TOKEN>
+VAULT_SERVER_URL=<YOUR_VAULT_SERVER>
+VAULT_SECRET_MOUNTPOINT=<YOUR_VAULT_SERVER_FOR_EXAMPLE_kv-v2>
+VAULT_SECRET_PATH=<YOUR_VAULT_SERVER_FOR_EXAMPLE_lab>
+EOL 
+
+```
+
+### The hard way (directly in your env)
+
+```
+# export all the required environment variables
+export AIRTABLE_TOKEN=<YOUR_AT_TOKEN>
+export AIRTABLE_BASE_ID=<YOUR_AT_BASE_ID>
+export AIRTABLE_TABLE_DB=<YOUR_AT_TABLE_ID>
+export VAULT_TOKEN=<YOUR_VAULT_TOKEN>
+export VAULT_SERVER_URL=<YOUR_VAULT_SERVER>
+export VAULT_SECRET_MOUNTPOINT=<YOUR_VAULT_SERVER_FOR_EXAMPLE_kv-v2>
+export VAULT_SECRET_PATH=<YOUR_VAULT_SERVER_FOR_EXAMPLE_lab>
+
+pip install -r requirements
+
+python main.py
+```
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
