@@ -90,14 +90,11 @@ This code will then use Terraform to manage the Lab lifecycle, and reset everyth
 
 Why? Because we want to re-use the `harness sandbox project + lab student user` combo.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+This is the current mechanism description:
+* It gets the password from Vault
+* Then, it picks one free slot from the Harness User Farm (managed by Terraform)
+* It will parse everything and give it to Instruqt at runtime, so we can present this to the user doing the exam.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
