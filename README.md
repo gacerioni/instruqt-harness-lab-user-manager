@@ -37,7 +37,8 @@
   <h3 align="center">Instruqt Harness Lab User Manager (Anbu Automation)</h3>
 
   <p align="center">
-    An awesome python util to handle Harness Lab Users for Instruqt tracks!   
+    An awesome python util to handle Harness Lab Users for Instruqt tracks!
+    
     No worries, all sensitive information are captured via environment variables.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
