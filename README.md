@@ -44,6 +44,7 @@
     <a href="https://developer.harness.io/"><strong>Explore our Developer Hub»</strong></a>
     <br />
     <br />
+  </p>    
 </div>
 
 
