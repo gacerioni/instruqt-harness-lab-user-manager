@@ -41,10 +41,15 @@
     
     No worries, all sensitive information are captured via environment variables.
     <br />
-    <a href="https://developer.harness.io/"><strong>Explore our Developer Hub»</strong></a>
+    <a href="https://developer.harness.io/"><strong>Explore our Developer Hub </strong></a>
     <br />
     <br />
-  </p>    
+    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+  </p>
 </div>
 
 
