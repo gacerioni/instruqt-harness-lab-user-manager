@@ -84,7 +84,11 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This is just a simple handler to give us a free slot for taking Harness Certification exams using a Sandbox Account.
+
+This code will then use Terraform to manage the Lab lifecycle, and reset everything to the initial state.
+
+Why? Because we want to re-use the `harness sandbox project + lab student user` combo.
 
 Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others
