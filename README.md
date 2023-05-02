@@ -39,14 +39,14 @@
   <p align="center">
     An awesome python util to handle Harness Lab Users for Instruqt tracks!
     <br />
-    <a href="https://developer.harness.io/" target="_blank"><strong>Explore the Developer Hub in a new tab »</strong></a>
+    <a href="https://developer.harness.io/" target="_blank"><strong>Explore the Developer Hub »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager">View Demo (soon)</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager/issues">Report Bug (soon)</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager/issues">Request Feature (soon)</a>
   </p>
 </div>
 
