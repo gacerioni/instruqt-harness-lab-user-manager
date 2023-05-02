@@ -44,9 +44,9 @@
     <br />
     <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager">View Demo (soon)</a>
     ·
-    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager/issues">Report Bug (soon)</a>
+    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager/issues">Report Bug</a>
     ·
-    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager/issues">Request Feature (soon)</a>
+    <a href="https://github.com/gacerioni/instruqt-harness-lab-user-manager/issues">Request Feature</a>
   </p>
 </div>
 
