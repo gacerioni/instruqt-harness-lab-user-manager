@@ -102,7 +102,7 @@ This is the current mechanism description:
 
 ### Built With
 
-* [![Python][Next.js]][Next-url]
+* [![Python][Python]][Next-url]
 * [![React][React.js]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
