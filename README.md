@@ -248,9 +248,9 @@ Use this space to list resources you find helpful and would like to give credit 
 [Python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
 [Python-url]: https://www.python.org/
 [AirTable]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
-[AirTable-url]: https://www.python.org/
-[Vault]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
-[Vault-url]: https://www.python.org/
+[AirTable-url]: https://airtable.com/
+[Vault]: https://img.shields.io/badge/Vault-FFFFFF?style=for-the-badge&logo=vault&logoColor=black
+[Vault-url]: https://www.vaultproject.io/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
