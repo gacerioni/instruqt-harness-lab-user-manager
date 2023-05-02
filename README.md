@@ -39,7 +39,7 @@
   <p align="center">
     An awesome python util to handle Harness Lab Users for Instruqt tracks!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="[https://github.com/othneildrew/Best-README-Template](https://developer.harness.io/)"><strong>Explore the Developer Hub »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
