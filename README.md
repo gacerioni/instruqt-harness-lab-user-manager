@@ -142,7 +142,12 @@ VAULT_SERVER_URL=<YOUR_VAULT_SERVER>
 VAULT_SECRET_MOUNTPOINT=<YOUR_VAULT_SERVER_FOR_EXAMPLE_kv-v2>
 VAULT_SECRET_PATH=<YOUR_VAULT_SERVER_FOR_EXAMPLE_lab>
 EOL 
+```
 
+And then you just hit the road:
+
+```
+docker run -it --env-file env.harness gacerioni/instruqt-harness-lab-user-manager:<TAG>
 ```
 
 ### The hard way (directly in your env)
