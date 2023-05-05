@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_basicauth import BasicAuth
 import airtable_data_manager
 from lab_student_manager import vault_manager
 from lab_student_manager.student import Student
@@ -14,6 +15,11 @@ VAULT_SECRET_MOUNTPOINT = os.getenv("VAULT_SECRET_MOUNTPOINT")
 VAULT_SECRET_PATH = os.getenv("VAULT_SECRET_PATH")
 
 app = Flask(__name__)
+
+app.config['BASIC_AUTH_USERNAME'] = os.getenv("FLASK_API_USER")
+app.config['BASIC_AUTH_PASSWORD'] = os.getenv("FLASK_API_PWD")
+
+basic_auth = BasicAuth(app)
 
 
 def get_final_student_object(at_token, at_base_id, at_table_db, vault_token, vault_server_url, vault_secret_mountpoint,
@@ -42,7 +48,14 @@ def get_final_student_object(at_token, at_base_id, at_table_db, vault_token, vau
     return student_obj
 
 
+@app.route('/secret')
+@basic_auth.required
+def secret_view():
+    return {"Secret": "Voldemort"}
+
+
 @app.route("/user-slot")
+@basic_auth.required
 def index():
     results = get_final_student_object(
         at_token=AIRTABLE_TOKEN,
