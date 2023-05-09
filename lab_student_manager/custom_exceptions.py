@@ -17,3 +17,8 @@ class VaultConnFailure(Exception):
 class VaultQueryFailure(Exception):
     """Raised when the program fails to query Vault for secrets"""
     pass
+
+
+class HarnessAPIResultsFailure(Exception):
+    """Raised when the program fails to interact with Harness API properly"""
+    pass
