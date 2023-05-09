@@ -24,7 +24,7 @@ AIRTABLE_TABLE_DB = os.getenv("AIRTABLE_TABLE_DB")
 HARNESS_ACCOUNT_ID = "zHadgwdTQqWG8CA3Jv6Feg"
 HARNESS_ORG_ID = "P190"
 HARNESS_DEFAULT_PROJECT_ID = "p1903"
-HARNESS_PAT = 'pat.zHadgwdTQqWG8CA3Jv6Feg.64529572caee7a13df284306.OxTUM7XoIovAGnaLxUTs'
+HARNESS_PAT = ''
 HARNESS_API_PATH = "https://app.harness.io/gateway/pipeline/api/"
 HARNESS_SERVICE_ENV_API_PATH = "https://app.harness.io/gateway/ng/api/"
 
