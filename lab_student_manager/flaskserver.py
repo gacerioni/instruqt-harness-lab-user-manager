@@ -48,6 +48,10 @@ def get_final_student_object(at_token, at_base_id, at_table_db, vault_token, vau
     return student_obj
 
 
+@app.route('/')
+def index():
+    return "I'm alive!"
+
 @app.route('/secret')
 @basic_auth.required
 def secret_view():
