@@ -60,7 +60,7 @@ def secret_view():
 
 @app.route("/user-slot")
 @basic_auth.required
-def index():
+def user_slot():
     results = get_final_student_object(
         at_token=AIRTABLE_TOKEN,
         at_base_id=AIRTABLE_BASE_ID, at_table_db=AIRTABLE_TABLE_DB,
