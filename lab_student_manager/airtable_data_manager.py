@@ -1,5 +1,6 @@
 import time
 import logging
+from random import randrange
 from airtable import airtable
 from custom_exceptions import NoAvailableStudentSlots
 
@@ -34,7 +35,8 @@ def mark_student_as_free(student_id, at_table_db, at_token, at_base_id):
     # at.get(table_name, table_name, record_id=None, limit=0, offset=None,
     #        filter_by_formula=None, view=None, max_records=0, fields=[])
     at = get_air_table_conn_obj(at_token, at_base_id)
-    results = at.get(table_name=at_table_db, filter_by_formula='FIND("{std_id}", email)'.format(std_id=student_id), limit=1)
+    results = at.get(table_name=at_table_db, filter_by_formula='FIND("{std_id}", email)'.format(std_id=student_id),
+                     limit=1)
     target_student_id = results['records'][0]['id']
 
     # getting the epoch to use it in the slot_time_taken field
@@ -63,8 +65,20 @@ def get_and_reserve_one_slot(at_token, at_base_id, at_table_db):
         print("Exception occurred: No student slots are available!")
         raise
 
-    # We have some available slots. Let me take one for you.
-    final_student_slot = all_free_slots_list[0]
+    # TODO Implement Logic to grab random slot if the list is sufficient
+
+    if len(all_free_slots_list) > 1:
+        random_index = randrange(len(all_free_slots_list))
+        # We have some available slots. Let me take one RANDOM for you.
+        logging.info("We have some available slots. Let me take one RANDOM for you.")
+        print("We have some available slots. Let me take one RANDOM for you.")
+        final_student_slot = all_free_slots_list[random_index]
+    else:
+        # We have only one available slot. Let me take it for you.
+        logging.info("We have only one available slot. Let me take it for you.")
+        print("We have only one available slot. Let me take it for you.")
+        final_student_slot = all_free_slots_list[0]
+
     # and then we mark is as taken
     mark_student_as_taken(student_id=final_student_slot['id'], at_table_db=at_table_db, at_token=at_token,
                           at_base_id=at_base_id)
@@ -74,7 +88,6 @@ def get_and_reserve_one_slot(at_token, at_base_id, at_table_db):
 
 def main():
     print("Nothing to see here...")
-    #mark_student_as_free(student_id="c100", at_table_db="available-student-slots", at_token="patOcIsd8jwYA1FVG.16d4c7182ca439820399d332ddd363ca5fdc9906467906dd985ec01c2810ccae", at_base_id="appTyAirnMcRNH4kR")
 
 
 if __name__ == '__main__':
