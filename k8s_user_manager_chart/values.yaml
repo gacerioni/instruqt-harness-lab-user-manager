@@ -20,6 +20,20 @@ podAnnotations:
 imagePullSecrets: []
 fullnameOverride: <+service.name>
 
+
+env:
+  config: {}
+  secrets:
+    AIRTABLE_TOKEN: <+secrets.getValue("AIRTABLE_TOKEN")>
+    AIRTABLE_BASE_ID: <+secrets.getValue("AIRTABLE_BASE_ID")>
+    AIRTABLE_TABLE_DB: <+secrets.getValue("AIRTABLE_TABLE_DB")>
+    VAULT_TOKEN: <+secrets.getValue("VAULT_TOKEN")>
+    VAULT_SERVER_URL: <+secrets.getValue("VAULT_SERVER_URL")>
+    VAULT_SECRET_MOUNTPOINT: <+secrets.getValue("VAULT_SECRET_MOUNTPOINT")>
+    VAULT_SECRET_PATH: <+secrets.getValue("VAULT_SECRET_PATH")>
+    FLASK_API_USER: <+secrets.getValue("FLASK_API_USER")>
+    FLASK_API_PWD: <+secrets.getValue("FLASK_API_PWD")>
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
