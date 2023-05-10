@@ -33,6 +33,7 @@ env:
     VAULT_SECRET_PATH: <+secrets.getValue("VAULT_SECRET_PATH")>
     FLASK_API_USER: <+secrets.getValue("FLASK_API_USER")>
     FLASK_API_PWD: <+secrets.getValue("FLASK_API_PWD")>
+    HARDCODED_PWD: <+secrets.getValue("HARDCODED_PWD")>
 
 serviceAccount:
   # Specifies whether a service account should be created
