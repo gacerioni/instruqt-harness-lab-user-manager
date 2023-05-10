@@ -2,6 +2,8 @@
 import os
 import logging
 import sys
+import time
+
 import requests
 
 from lab_student_manager.custom_exceptions import HarnessAPIResultsFailure
@@ -23,10 +25,11 @@ AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID")
 AIRTABLE_TABLE_DB = os.getenv("AIRTABLE_TABLE_DB")
 HARNESS_ACCOUNT_ID = "zHadgwdTQqWG8CA3Jv6Feg"
 HARNESS_ORG_ID = "P190"
-HARNESS_DEFAULT_PROJECT_ID = "p1903"
-HARNESS_PAT = ''
+HARNESS_DEFAULT_PROJECT_ID = "p1901"
+HARNESS_PAT = 'pat.zHadgwdTQqWG8CA3Jv6Feg.64529572caee7a13df284306.OxTUM7XoIovAGnaLxUTs'
 HARNESS_API_PATH = "https://app.harness.io/gateway/pipeline/api/"
 HARNESS_SERVICE_ENV_API_PATH = "https://app.harness.io/gateway/ng/api/"
+HARNESS_EMAIL_DOMAIN = "@harness.labs"
 
 
 def get_pipelines_in_project(project_id):
@@ -227,7 +230,7 @@ def get_delegate_tokens_in_project(project_id):
         raise SystemExit(e)
 
     ## validating is the hit is good, not only the requests aspects
-    #if results.json()['resource'] != "SUCCESS":
+    # if results.json()['resource'] != "SUCCESS":
     #    raise HarnessAPIResultsFailure
 
     logging.info("Done!")
@@ -249,7 +252,7 @@ def get_delegate_groups_using_a_specific_token(project_id, delegate_token_name):
         raise SystemExit(e)
 
     ## validating is the hit is good, not only the requests aspects
-    #if results.json()['resource'] != "SUCCESS":
+    # if results.json()['resource'] != "SUCCESS":
     #    raise HarnessAPIResultsFailure
 
     logging.info("Done!")
@@ -257,14 +260,95 @@ def get_delegate_groups_using_a_specific_token(project_id, delegate_token_name):
     return results
 
 
+def delete_project_by_id(project_id):
+    headers = {'Content-Type': 'application/json', 'x-api-key': HARNESS_PAT}
+
+    parameters = {"accountIdentifier": HARNESS_ACCOUNT_ID, "orgIdentifier": HARNESS_ORG_ID}
+
+    delete_url = "{0}projects/{1}".format(HARNESS_SERVICE_ENV_API_PATH, project_id)
+
+    try:
+        logging.info("Going to delete this Project now: {}".format(project_id))
+        x = requests.delete(delete_url, headers=headers, params=parameters)
+        logging.info(x.text)
+    except requests.exceptions.RequestException as e:
+        logging.error("Something is wrong with the request itself, that's not even evaluating the response yet.")
+        raise SystemExit(e)
+
+
+def create_project_by_id(project_id):
+    headers = {'Content-Type': 'application/json', 'x-api-key': HARNESS_PAT}
+    parameters = {"accountIdentifier": HARNESS_ACCOUNT_ID, "orgIdentifier": HARNESS_ORG_ID}
+    create_url = "{0}projects".format(HARNESS_SERVICE_ENV_API_PATH)
+
+    payload = '''{{
+      "project": {{
+        "orgIdentifier": "{org_id}",
+        "identifier": "{prj_id}",
+        "name": "{prj_id}",
+        "description": "Powered by Gabs the Creator automations.",
+        "tags": {{
+          "automated": "yes",
+          "owner": "gabslabs"
+        }}
+      }}
+    }}'''.format(org_id=HARNESS_ORG_ID, prj_id=project_id)
+
+    try:
+        logging.info("Going to create this Project now: {}".format(project_id))
+        x = requests.post(create_url, headers=headers, params=parameters, data=payload)
+        logging.info(x.text)
+    except requests.exceptions.RequestException as e:
+        logging.error("Something is wrong with the request itself, that's not even evaluating the response yet.")
+        raise SystemExit(e)
+
+
+def invite_user_to_project_by_id(project_id):
+    headers = {'Content-Type': 'application/json', 'x-api-key': HARNESS_PAT}
+    parameters = {"accountIdentifier": HARNESS_ACCOUNT_ID, "orgIdentifier": HARNESS_ORG_ID,
+                  "routingId": HARNESS_ACCOUNT_ID, "projectIdentifier": project_id}
+    create_url = "{0}user/users".format(HARNESS_SERVICE_ENV_API_PATH)
+    student_owner_email = "{0}{1}".format(project_id, HARNESS_EMAIL_DOMAIN)
+
+    payload = '''{{
+    "emails": [
+        "{prj_student_owner}"
+    ],
+    "userGroups": [
+        "_project_all_users"
+    ],
+    "roleBindings": [
+        {{
+            "resourceGroupIdentifier": "_all_project_level_resources",
+            "roleIdentifier": "_project_admin",
+            "roleName": "Project Admin",
+            "resourceGroupName": "All Project Level Resources",
+            "managedRole": true
+        }}
+    ]
+    }}'''.format(prj_student_owner=student_owner_email)
+
+    try:
+        logging.info("Going to invite the owner student to this Project now: {}".format(project_id))
+        x = requests.post(create_url, headers=headers, params=parameters, data=payload)
+        logging.info(x.text)
+    except requests.exceptions.RequestException as e:
+        logging.error("Something is wrong with the request itself, that's not even evaluating the response yet.")
+        raise SystemExit(e)
+
 
 def main():
-    delete_all_pipelines_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
-    delete_all_services_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
-    delete_all_environments_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
-    delete_all_k8s_connectors_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
-    #print(get_delegate_groups_using_a_specific_token(project_id=HARNESS_DEFAULT_PROJECT_ID, delegate_token_name="instruqt").text)
-
+    # delete_all_pipelines_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
+    # delete_all_services_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
+    # delete_all_environments_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
+    # delete_all_k8s_connectors_in_project(project_id=HARNESS_DEFAULT_PROJECT_ID)
+    # print(get_delegate_groups_using_a_specific_token(project_id=HARNESS_DEFAULT_PROJECT_ID, delegate_token_name="instruqt").text)
+    #elete_project_by_id("p1904")
+    #time.sleep(3)
+    #create_project_by_id("p1904")
+    #time.sleep(3)
+    #invite_user_to_project_by_id("p1904")
+    print("Nothing to see here...")
 
 
 if __name__ == '__main__':
