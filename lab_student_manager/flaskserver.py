@@ -83,12 +83,24 @@ def get_final_student_object(at_token, at_base_id, at_table_db, vault_token, vau
 
 
 def bounce_the_student_project_by_id(project_id):
-    logging.info("Starting to bounce the entire {0} Project...")
+    logging.info("Starting to bounce the entire {0} Project...".format(project_id))
     harness_lab_manager.delete_project_by_id(project_id)
-    time.sleep(1)
+    time.sleep(5)
     harness_lab_manager.create_project_by_id(project_id)
-    time.sleep(1)
-    harness_lab_manager.invite_user_to_project_by_id(project_id)
+    time.sleep(5)
+    invite_response = harness_lab_manager.invite_user_to_project_by_id(project_id)
+    logging.info("This is the response from the user invite attempt: {}".format(invite_response.text))
+
+    # API BUG HANDLING - INCONSISTENT API ON HARNESS SIDE
+    if ("USER_ALREADY_ADDED" in invite_response.text) or (invite_response.json()['status'] != "SUCCESS"):
+        attempts = 3
+        for i in range(attempts):
+            logging.info("The Harness User Invite API is inconsistent. Trying to invite {0} again.".format(project_id))
+            retry_invite_response = harness_lab_manager.invite_user_to_project_by_id(project_id)
+            #print("### Results of the retry:")
+            #print(retry_invite_response.text)
+            time.sleep(3)
+
     logging.info("Done!")
 
 

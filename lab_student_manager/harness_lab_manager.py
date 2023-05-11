@@ -335,6 +335,7 @@ def invite_user_to_project_by_id(project_id):
     except requests.exceptions.RequestException as e:
         logging.error("Something is wrong with the request itself, that's not even evaluating the response yet.")
         raise SystemExit(e)
+    return x
 
 
 def main():
